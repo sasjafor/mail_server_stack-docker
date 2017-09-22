@@ -1,0 +1,49 @@
+FROM ubuntu
+
+# Install packages
+RUN apt install dovecot-core \
+                dovecot-imapd \
+                dovecot-managesieved \
+                dovecot-pop3d \
+                postfix \
+                opendkim \
+                opendkim-tools \
+                spamass-milter \
+                pyzor \
+                razor \
+                libmail-dkim-perl \
+                clamav-milter \
+                arj \
+                bzip2 \
+                cabextract \
+                cpio \
+                file \
+                gzip \
+                lha \
+                lzop \
+                nomarch \
+                p7zip \
+                pax \
+                rar \
+                rpm \
+                unrar \
+                unzip \
+                zip \
+                zoo \
+                iptables-persistent && \
+
+# Copy source
+COPY root/ /
+
+# Configure postfix
+    postconf -e "myhostname = ${SERVER_HOSTNAME}" \
+                "mydestination = $myhostname, localhost.${SERVER_HOSTNAME}, localhost" \
+                "smtpd_tls_cert_file = /config/ssl/ssl-cert-${SERVER_HOSTNAME}.pem" \
+                "smtpd_tls_key_file = /config/ssl/ssl-key-${SERVER_HOSTNAME}.key" \
+
+# Set postfix maps
+    echo "postmaster: webmaster@${SERVER_HOSTNAME}
+root: webmaster@${SERVER_HOSTNAME}
+www-data: webmaster@${SERVER_HOSTNAME}" > /etc/aliases
+
+
