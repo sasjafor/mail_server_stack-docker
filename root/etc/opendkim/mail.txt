@@ -1,0 +1,2 @@
+mail._domainkey	IN	TXT	( "v=DKIM1; h=sha256; k=rsa; s=email; "
+	  "p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQD6m+GIbmwtn/hgMjFFtsglCMQdYRQc+RsOpBNcCcQGOJUSNs04P50f3FGs5dscKbIJlbQf+n9vZCe3UdpyF9GL9nLCV4XwWr7+ZkoYMbvhAfykS6XcTwtA/RnEpnTzVpFxbv+wd8vZ4ei8rRkphR889Qd2VHhBxovxg/gqKDeq5QIDAQAB" )  ; ----- DKIM key mail for mail.saschaforster.ch
