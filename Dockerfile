@@ -6,7 +6,8 @@ RUN echo "postfix postfix/mailname string local.loc" | debconf-set-selections &&
 	echo "iptables-persistent iptables-persistent/autosave_v4 boolean true" | debconf-set-selections && \
 	echo "iptables-persistent iptables-persistent/autosave_v6 boolean true" | debconf-set-selections && \
 	apt update && \
-	apt install -y --no-install-recommends mail-stack-delivery \
+	apt install -y --no-install-recommends \
+			mail-stack-delivery \
 			dovecot-lmtpd \
 			dovecot-pgsql \
 			postfix-pgsql \
@@ -34,18 +35,14 @@ RUN echo "postfix postfix/mailname string local.loc" | debconf-set-selections &&
 			unzip \
 			zip \
 			zoo \
-			iptables-persistent \
-			nginx-full \
-			postgresql \
-			php-fpm \
-			php-pgsql \
-			php-pear \
-			php-mcrypt \
-			php-intl
+			iptables-persistent && \
+	rm -rf /var/lib/apt/lists/*
 
 # Copy source
 COPY root/ /
 
-VOLUME /config
+VOLUME /config /var/mail/vmail
 
-CMD ["/usr/scripts/run.sh"]
+EXPOSE 25 465 587 110 995 143 993
+
+CMD ["/run.sh"]

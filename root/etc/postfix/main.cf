@@ -35,14 +35,14 @@ mynetworks = 127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128 192.168.1.0/24
 ## Customised smtpd parameters
 smtpd_banner = $myhostname ESMTP
 smtpd_helo_required = yes
-smptd_helo_restrictions = permit_mynetworks, reject_non_fqdn_helo_hostname, reject_invalid_helo_hostname, reject_unknown_helo_hostname, permit
+smtpd_helo_restrictions = permit_mynetworks, reject_non_fqdn_helo_hostname, reject_invalid_helo_hostname, reject_unknown_helo_hostname, permit
 smtpd_recipient_restrictions = reject_unknown_client_hostname, reject_unknown_sender_domain, reject_unknown_recipient_domain, reject_unauth_pipelining, permit_mynetworks, permit_sasl_authenticated, reject_unauth_destination, reject_invalid_hostname, reject_non_fqdn_sender
 smtpd_sender_restrictions = reject_unknown_sender_domain, reject_sender_login_mismatch
 smtpd_sender_login_maps = $virtual_mailbox_maps
 
 ## Use permanent 550 errors to stop retries
-unknown_adress_reject_code = 550
-unknown_hostnmame_reject_code = 550
+unknown_address_reject_code = 550
+unknown_hostname_reject_code = 550
 unknown_client_reject_code = 550
 
 ## Customised TLS parameters
@@ -59,9 +59,9 @@ smtpd_tls_session_cache_timeout = 3600s
 canonical_maps = hash:/etc/postfix/canonical
 home_mailbox = Maildir/
 message_size_limit = 104857600
-virtual_alias_maps = hash:/etc/postfix/virtual
-virtual_mailbox_domains = hash:/etc/postfix/virtual-mailbox-domains
-virtual_mailbox_maps = hash:/etc/postfix/virtual-mailbox-users
+virtual_mailbox_domains = pgsql:/etc/postfix/pgsql-virtual-mailbox-domains.cf
+virtual_mailbox_maps = pgsql:/etc/postfix/pgsql-virtual-mailbox-maps.cf
+virtual_alias_maps = pgsql:/etc/postfix/pgsql-virtual-alias-maps.cf, pgsql:/etc/postfix/pgsql-virtual-email2email.cf
 virtual_transport = lmtp:unix:private/dovecot-lmtp
 
 ## This setting will generate an error if you restart Postfix before
