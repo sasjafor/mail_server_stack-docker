@@ -1,8 +1,8 @@
 #!/bin/bash
 # Create directories
-mkdir /var/lib/spamassassin/.razor
+# mkdir /var/lib/spamassassin/.razor
 mkdir /var/lib/spamassassin/.pyzor
-mkdir /var/lib/spamassassin/.spamassassin
+# mkdir /var/lib/spamassassin/.spamassassin
 
 # Setup pyzor
 pyzor --homedir /var/lib/spamassassin/.pyzor discover

@@ -9,8 +9,7 @@ usermod -a -G spamd spamass-milter
 mkdir /var/spool/postfix/spamassassin
 chown spamd:root /var/spool/postfix/spamassassin/
 
-# Update spam rules
-sa-update
+# Fix permissions
 chown -R spamd:spamd /var/lib/spamassassin
 
 # Make directory for bayesian filter
