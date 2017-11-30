@@ -1,0 +1,4 @@
+user = mailuser
+hosts = localhost:5432
+dbname = mailserver
+query = SELECT email FROM virtual_users WHERE email='%s'
