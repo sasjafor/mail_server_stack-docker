@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -e
 # Configure postfix
 ./usr/local/bin/postfix_setup.sh
 echo "=== POSTFIX CONFIGURED ==="
@@ -28,7 +29,7 @@ echo "=== CLAMAV CONFIGURED ==="
 echo "=== SIEVE CONFIGURED ==="
 
 # Configure iptables
-iptables-restore /etc/iptables/rules.v4
+#iptables-restore /etc/iptables/rules.v4
 
 # Start services
 service postfix start
@@ -41,4 +42,5 @@ service clamav-milter start
 echo "=== CLAMAV STARTED ==="
 service spamass-milter start
 echo "=== SPAMASS STARTED ==="
-/bin/sh
+
+exec "$@"

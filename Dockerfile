@@ -19,6 +19,7 @@ RUN echo "postfix postfix/mailname string local.loc" | debconf-set-selections &&
 			libmail-dkim-perl \
 			clamav-milter \
 			arj \
+			bcrypt \
 			bzip2 \
 			cabextract \
 			cpio \
@@ -38,11 +39,14 @@ RUN echo "postfix postfix/mailname string local.loc" | debconf-set-selections &&
 			iptables-persistent && \
 	rm -rf /var/lib/apt/lists/*
 
+VOLUME /config /var/mail/vmail
+
 # Copy source
 COPY root/ /
 
-VOLUME /config /var/mail/vmail
+COPY docker-entrypoint.sh /usr/local/bin/
+ENTRYPOINT ["docker-entrypoint.sh"]
 
 EXPOSE 25 465 587 110 995 143 993
 
-CMD ["/run.sh"]
+CMD ["/bin/bash"]
