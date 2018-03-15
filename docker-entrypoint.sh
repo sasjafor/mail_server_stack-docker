@@ -32,15 +32,15 @@ echo "=== SIEVE CONFIGURED ==="
 #iptables-restore /etc/iptables/rules.v4
 
 # Start services
-service postfix start
-echo "=== POSTFIX STARTED ==="
-service dovecot start
-echo "=== DOVECOT STARTED ==="
-service opendkim start
-echo "=== OPENDKIM STARTED ==="
-service clamav-milter start
-echo "=== CLAMAV STARTED ==="
-service spamass-milter start
-echo "=== SPAMASS STARTED ==="
+#service postfix start
+#echo "=== POSTFIX STARTED ==="
+#service dovecot start
+#echo "=== DOVECOT STARTED ==="
+#service opendkim start
+#echo "=== OPENDKIM STARTED ==="
+#service clamav-milter start
+#echo "=== CLAMAV STARTED ==="
+#service spamass-milter start
+#echo "=== SPAMASS STARTED ==="
 
 exec "$@"

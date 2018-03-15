@@ -5,7 +5,7 @@ mkdir /var/lib/spamassassin/.pyzor
 # mkdir /var/lib/spamassassin/.spamassassin
 
 # Setup pyzor
-pyzor --homedir /var/lib/spamassassin/.pyzor discover
+#pyzor --homedir /var/lib/spamassassin/.pyzor discover
 
 # Setup razor
 razor-admin -home=/var/lib/spamassassin/.razor -register

@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM ubuntu:bionic
 
 # Install packages
 RUN echo "postfix postfix/mailname string local.loc" | debconf-set-selections && \
@@ -35,7 +35,7 @@ RUN echo "postfix postfix/mailname string local.loc" | debconf-set-selections &&
 			unrar \
 			unzip \
 			zip \
-			zoo \
+#			zoo \
 			iptables-persistent \
 			supervisor && \
 	rm -rf /var/lib/apt/lists/*
@@ -52,4 +52,4 @@ ENTRYPOINT ["docker-entrypoint.sh"]
 
 EXPOSE 25 465 587 110 995 143 993
 
-CMD ["/usr/bin/supervisord","-c /etc/supervisor/conf.d/supervisord.conf"]
+CMD ["/usr/bin/supervisord", "-n", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
