@@ -52,4 +52,4 @@ ENTRYPOINT ["docker-entrypoint.sh"]
 
 EXPOSE 25 465 587 110 995 143 993
 
-CMD ["/usr/bin/supervisord"]
+CMD ["/usr/bin/supervisord","-c /etc/supervisor/conf.d/supervisord.conf
