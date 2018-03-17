@@ -40,6 +40,14 @@ if [ $status -ne 0 ]; then
 	exit $status
 fi
 
+service syslog-ng start
+status=$?
+if [ $status -ne 0 ]; then
+	echo "Failed to start syslog-ng: $status"
+	exit $status
+fi
+
+:'
 while sleep 60; do
 	ps aux | grep postfix | grep -q -v grep
 	PROCESS_1_STATUS=$?
@@ -58,3 +66,5 @@ while sleep 60; do
 		exit 1
 	fi
 done
+'
+tail -F /var/log/mail.log
