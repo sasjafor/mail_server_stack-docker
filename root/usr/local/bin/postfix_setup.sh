@@ -10,10 +10,10 @@ postconf -e "myhostname = ${SERVER_HOSTNAME}" \
 # aliases
 echo "postmaster: webmaster@${SERVER_HOSTNAME}
 root: webmaster@${SERVER_HOSTNAME}
-www-data: webmaster@${SERVER_HOSTNAME}" > /etc/aliases
+www-data: webmaster@${SERVER_HOSTNAME}" >> /etc/aliases
 
 # canonical
-echo "www-data@${SERVER_HOSTNAME} mailman@${SERVER_HOSTNAME}" > /etc/postfix/canonical
+echo "www-data@${SERVER_HOSTNAME} mailman@${SERVER_HOSTNAME}" >> /etc/postfix/canonical
 
 # Hash the maps
 newaliases
