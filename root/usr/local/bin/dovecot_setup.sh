@@ -10,7 +10,7 @@ ssl_key = </config/ssl/ssl-key-${SERVER_HOSTNAME}.key
 protocol lmtp {
         postmaster_address = postmaster@${SERVER_HOSTNAME}
         mail_plugins = sieve
-}" > /etc/dovecot/conf.d/99-mail-stack-delivery-conf
+}" >> /etc/dovecot/conf.d/99-mail-stack-delivery.conf
 
 # Write connection string to sql conf file
-echo "connect = host=localhost:5432 dbname=mailserver user=mailuser password=${POSTGRES_PASSWORD}" > /etc/dovecot/conf.d/dovecot-sql.conf.ext
+echo "connect = host=localhost:5432 dbname=mailserver user=mailuser password=${POSTGRES_PASSWORD}" >> /etc/dovecot/conf.d/dovecot-sql.conf.ext
