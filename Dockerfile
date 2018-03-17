@@ -52,3 +52,8 @@ EXPOSE 25 465 587 110 995 143 993
 COPY init.sh /usr/local/bin/
 
 CMD ["/usr/local/bin/init.sh"]
+
+RUN 	apt update && \
+	apt install -y --no-install-recommends \
+			syslog-ng && \
+	rm -rf /var/lib/apt/lists/*
