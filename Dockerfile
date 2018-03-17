@@ -36,13 +36,10 @@ RUN echo "postfix postfix/mailname string local.loc" | debconf-set-selections &&
 			unzip \
 			zip \
 #			zoo \
-			iptables-persistent \
-			supervisor && \
+			iptables-persistent && \
 	rm -rf /var/lib/apt/lists/*
 
 VOLUME /config /var/mail/vmail
-
-RUN mkdir -p /var/log/supervisor
 
 # Copy source
 COPY root/ /
@@ -52,4 +49,6 @@ ENTRYPOINT ["docker-entrypoint.sh"]
 
 EXPOSE 25 465 587 110 995 143 993
 
-CMD ["/usr/bin/supervisord", "-n", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
+COPY init.sh /usr/local/bin/
+
+CMD ["/usr/local/bin/init.sh"]
