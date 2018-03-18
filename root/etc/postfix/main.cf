@@ -75,7 +75,7 @@ dovecot_destination_recipient_limit = 1
 milter_default_action = accept
 milter_connect_macros = j {daemon_name} v {if_name} _
 non_smtpd_milters = $smtpd_milters
-smtpd_milters = unix:/spamass/spamass.sock unix:/clamav/clamav-milter.ctl unix:/opendkim/opendkim.sock
+smtpd_milters = unix:spamass/spamass.sock unix:clamav/clamav-milter.ctl unix:opendkim/opendkim.sock
  
 ## Other customised mail server settings
 default_destination_concurrency_limit = 5
