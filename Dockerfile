@@ -47,7 +47,7 @@ RUN 	apt install -y --no-install-recommends curl
 RUN	curl https://repo.dovecot.org/DOVECOT-REPO-GPG | gpg --import && \
 	gpg --export ED409DA1 > /etc/apt/trusted.gpg.d/dovecot.gpg
 	
-RUN 	echo deb https://repo.dovecot.org/ce-2.3-latest/ubuntu/xenial xenial main > /etc/apt/sources.list.d/dovecot.list && \
+RUN 	echo "deb https://repo.dovecot.org/ce-2.3-latest/ubuntu/xenial xenial main" > /etc/apt/sources.list.d/dovecot.list && \
 	apt update && \
 	apt upgrade
 
