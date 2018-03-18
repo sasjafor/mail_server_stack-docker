@@ -14,6 +14,7 @@ RUN echo "postfix postfix/mailname string local.loc" | debconf-set-selections &&
 			opendkim \
 			opendkim-tools \
 			spamass-milter \
+			spamassassin \
 			pyzor \
 			razor \
 			libmail-dkim-perl \
