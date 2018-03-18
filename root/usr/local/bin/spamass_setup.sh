@@ -6,12 +6,9 @@ adduser --shell /bin/false --home /var/lib/spamassassin --disabled-password --di
 usermod -a -G spamd spamass-milter
 
 # Create socket directory and set ownership
-mkdir /var/spool/postfix/spamass
-chown spamass-milter:spamd /var/spool/postfix/spamass/
+mkdir /var/spool/postfix/spamassassin
+chown spamd:root /var/spool/postfix/spamassassin/
 
-# Fix permissions
-chown -R spamd:spamd /var/lib/spamassassin
-
-# Make directory for bayesian filter
+# Make directory for bayesian filter & fix permissions
 mkdir /var/lib/spamassassin/.spamassassin
-chown spamd:spamd /var/lib/spamassassin/.spamassassin
+chown -R spamd:spamd /var/lib/spamassassin
