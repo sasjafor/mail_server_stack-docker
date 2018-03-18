@@ -10,7 +10,7 @@ mkdir /var/spool/postfix/spamass
 chown spamd:root /var/spool/postfix/spamass/
 
 # Fix permissions
-chown -R spamd:spamd /var/lib/spamassassin
+chown -R spamass-milter:spamd /var/lib/spamassassin
 
 # Make directory for bayesian filter
 mkdir /var/lib/spamassassin/.spamassassin
