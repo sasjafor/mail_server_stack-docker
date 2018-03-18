@@ -7,7 +7,7 @@ usermod -a -G spamd spamass-milter
 
 # Create socket directory and set ownership
 mkdir /var/spool/postfix/spamass
-chown spamass-milter:root /var/spool/postfix/spamass/
+chown spamass-milter:spamd /var/spool/postfix/spamass/
 
 # Fix permissions
 chown -R spamd:spamd /var/lib/spamassassin
