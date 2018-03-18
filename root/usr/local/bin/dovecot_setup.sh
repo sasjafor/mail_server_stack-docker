@@ -13,4 +13,4 @@ protocol lmtp {
 }" >> /etc/dovecot/conf.d/99-mail-stack-delivery.conf
 
 # Write connection string to sql conf file
-echo "connect = host=localhost:5432 dbname=mailserver user=mailuser password=${POSTGRES_PASSWORD}" >> /etc/dovecot/conf.d/dovecot-sql.conf.ext
+echo "connect = host=localhost dbname=mailserver user=mailuser password=${POSTGRES_PASSWORD}" >> /etc/dovecot/conf.d/dovecot-sql.conf.ext
