@@ -36,8 +36,13 @@ RUN echo "postfix postfix/mailname string local.loc" | debconf-set-selections &&
 			unzip \
 			zip \
 #			zoo \
-			iptables-persistent && \
-	rm -rf /var/lib/apt/lists/*
+			iptables-persistent
+
+RUN 	apt update && \
+	apt install -y --no-install-recommends \
+			ca-certificates && \
+	rm -rf /var/lib/apt/lists/* && \
+	update-ca-certificates
 
 VOLUME /config /var/mail/vmail
 
