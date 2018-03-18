@@ -33,10 +33,18 @@ if [ $status -ne 0 ]; then
 fi
 
 # Start spamassassin
-service spamass-milter start
+service spamassassin start
 status=$?
 if [ $status -ne 0 ]; then
 	echo "Failed to start spamassassin: $status"
+	exit $status
+fi
+
+# Start spamass-milter
+service spamass-milter start
+status=$?
+if [ $status -ne 0 ]; then
+	echo "Failed to start spamass-milter: $status"
 	exit $status
 fi
 
