@@ -3,6 +3,9 @@
 groupadd -g 5000 vmail
 useradd -g vmail -u 5000 vmail -d /var/mail/vmail -m
 
+# Fix permissions
+chown -R vmail:vmail /var/mail/
+
 # Write directory of ssl certificate and key and set
 # protocol to lmtp
 echo "ssl_cert = </config/ssl/ssl-cert-${SERVER_HOSTNAME}.pem

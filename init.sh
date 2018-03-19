@@ -24,6 +24,14 @@ if [ $status -ne 0 ]; then
 	exit $status
 fi
 
+# Start clamd
+service clamav-daemon start
+status=$?
+if [ $status -ne 0 ]; then
+	echo "Failed to start clamd: $status"
+	exit $status
+fi
+
 # Start clamav
 service clamav-milter start
 status=$?

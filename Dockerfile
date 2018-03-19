@@ -1,6 +1,7 @@
 FROM ubuntu:bionic
 
 RUN 	apt update && \
+		apt upgrade -y --no-install-recommends && \
 		apt install -y --no-install-recommends \
 			curl \
 			ca-certificates
@@ -30,6 +31,7 @@ RUN 	echo "postfix postfix/mailname string local.loc" | debconf-set-selections &
 			razor \
 			libmail-dkim-perl \
 			clamav-milter \
+			clamav-daemon \
 			arj \
 			bcrypt \
 			bzip2 \
@@ -52,7 +54,9 @@ RUN 	echo "postfix postfix/mailname string local.loc" | debconf-set-selections &
 
 RUN 	apt install -y --no-install-recommends syslog-ng
 
-RUN	rm -rf /var/lib/apt/lists/*
+RUN		apt purge -y --no-install-recommends curl && \
+		apt autoremove -y && \
+		rm -rf /var/lib/apt/lists/*
 
 VOLUME /config /var/mail/vmail
 
